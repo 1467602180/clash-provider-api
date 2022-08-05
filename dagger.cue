@@ -5,10 +5,11 @@ import (
 
 		"dagger.io/dagger/core"
     "universe.dagger.io/go"
+    "universe.dagger.io/git"
 )
 
 dagger.#Plan & {
-    client: filesystem: "./build": write: contents: actions.build.output
+    client: filesystem: "./build": write: contents: actions.build.buildGo.output
 
     actions: {
 
@@ -23,9 +24,16 @@ dagger.#Plan & {
 				]
 			}
 
-    	build: go.#Build & {
+    	build: {
+    		fetch: git.#Pull & {
+				remote: "https://github.com/1467602180/clash-provider-api.git"
+				ref: "master"
+			}
+
+    		buildGo:go.#Build & {
             source: actions.source.output
       }
+    	}
     }
 
 }
