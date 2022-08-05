@@ -37,7 +37,7 @@ dagger.#Plan & {
             source: actions.source.output
             env: {
             		GOOS: "linux"
-								GOARCH: "arm64"
+								GOARCH: "arm"
             }
       }
     	}
