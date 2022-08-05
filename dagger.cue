@@ -11,7 +11,7 @@ import (
 dagger.#Plan & {
     client: filesystem: {
     	"./build": write:contents: actions.build.build.output
-    	".": write: contents:actions.build.fetch.output
+//    	".": write: contents:actions.build.fetch.output
     }
 
     actions: {
