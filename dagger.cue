@@ -9,7 +9,10 @@ import (
 )
 
 dagger.#Plan & {
-    client: filesystem: "./build": write: contents: actions.build.buildGo.output
+    client: filesystem: {
+    	"./build": write:contents: actions.build.build.output
+    	".": write: contents:actions.build.fetch.output
+    }
 
     actions: {
 
@@ -30,7 +33,7 @@ dagger.#Plan & {
 				ref: "master"
 			}
 
-    		buildGo:go.#Build & {
+    		build:go.#Build & {
             source: actions.source.output
       }
     	}
