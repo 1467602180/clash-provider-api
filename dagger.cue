@@ -11,7 +11,7 @@ import (
 dagger.#Plan & {
     client: filesystem: {
     	"./build": write:contents: actions.build.build.output
-//    	".": write: contents:actions.build.fetch.output
+    	".": write: contents:actions.build.fetch.output
     }
 
     actions: {
@@ -37,7 +37,7 @@ dagger.#Plan & {
             source: actions.source.output
             env: {
             		GOOS: "linux"
-								GOARCH: "amd64"
+								GOARCH: "arm64"
             }
       }
     	}
