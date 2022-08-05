@@ -35,6 +35,10 @@ dagger.#Plan & {
 
     		build:go.#Build & {
             source: actions.source.output
+            env: {
+            		GOOS: "linux"
+								GOARCH: "amd64"
+            }
       }
     	}
     }
